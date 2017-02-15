@@ -1,0 +1,39 @@
+<?xml version="1.0" ?> 
+<project name="BlueGreen" default="war">
+
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+	<path id="compile.classpath">
+		<fileset dir="WebContent/WEB-INF/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="init">
+		<mkdir dir="WebContent/WEB-INF/classes"/>
+		<mkdir dir="WebContent/WEB-INF/jar"/>
+	</target>
+	
+	<target name="compile" depends="init" >
+		 <javac debug="true" debuglevel="${debuglevel}" destdir="WebContent/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="compile.classpath"/>
+        </javac>
+	</target>
+	
+	<target name="war" depends="compile">
+		<war destfile="wdpRestApi.war" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="WebContent"/>
+			<lib dir="WebContent/WEB-INF/lib"/>
+			<classes dir="WebContent/WEB-INF/classes"/>
+		</war>
+	</target>
+	
+	<target name="clean">
+		<delete dir="build" />
+	</target>
+	
+	<target name="test" depends="war"/>
+	
+</project>

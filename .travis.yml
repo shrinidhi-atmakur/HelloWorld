@@ -1,0 +1,15 @@
+language: java
+sudo: required
+jdk:
+  - oraclejdk7
+deploy:
+  provider: bluemixcloudfoundry
+  skip_cleanup: true
+  manifest: manifest.yml
+  username: ashrinid@in.ibm.com
+  password: asdfgh12
+  organization: ashrinid@in.ibm.com
+  space: dev
+  on:
+    branch: master
+  
