@@ -6,9 +6,9 @@ deploy:
   provider: bluemixcloudfoundry
   skip_cleanup: true
   manifest: manifest.yml
-  username: ashrinid@in.ibm.com
+  username: abc@xyz.com
   password: asdfgh12
-  organization: ashrinid@in.ibm.com
+  organization: 
   space: dev
   on:
     branch: master
